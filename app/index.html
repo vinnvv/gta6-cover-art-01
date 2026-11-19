@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vice Panels: GTA-style cover maker</title>
+<meta name="description" content="Vice Panels turns your photos and a caption into multi-panel GTA-style cover art, exported as a PNG in three post sizes.">
+<link rel="stylesheet" href="./fonts/fonts.css">
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<header class="topbar">
+  <h1>VICE PANELS</h1>
+  <p>GTA-style cover maker: your photo, your caption, three post sizes.</p>
+</header>
+<main class="workspace">
+  <section class="controls" aria-label="Cover controls">
+    <section class="group">
+      <h2>1. Photos</h2>
+      <p class="note">Your photos stay on your machine. Load up to three, or try a sample.</p>
+      <div class="slot">
+        <label>Photo 1 <span class="slot-name" id="photo-name-0">No photo yet</span>
+          <input id="photo-0" type="file" accept="image/*">
+        </label>
+        <div class="sample-row">
+          <button type="button" data-sample="boulevard" data-slot="0">Boulevard</button>
+          <button type="button" data-sample="pier" data-slot="0">Pier</button>
+        </div>
+      </div>
+      <div class="slot">
+        <label>Photo 2 <span class="slot-name" id="photo-name-1">No photo yet</span>
+          <input id="photo-1" type="file" accept="image/*">
+        </label>
+        <div class="sample-row">
+          <button type="button" data-sample="boulevard" data-slot="1">Boulevard</button>
+          <button type="button" data-sample="pier" data-slot="1">Pier</button>
+        </div>
+      </div>
+      <div class="slot">
+        <label>Photo 3 <span class="slot-name" id="photo-name-2">No photo yet</span>
+          <input id="photo-2" type="file" accept="image/*">
+        </label>
+        <div class="sample-row">
+          <button type="button" data-sample="boulevard" data-slot="2">Boulevard</button>
+          <button type="button" data-sample="pier" data-slot="2">Pier</button>
+        </div>
+      </div>
+    </section>
+    <section class="group">
+      <h2>2. Panels</h2>
+      <div id="layout-row" class="pick-row"></div>
+      <div class="mode-row">
+        <button type="button" id="mode-span" class="picked">One photo across all panels</button>
+        <button type="button" id="mode-split">A photo per panel</button>
+      </div>
+      <div id="panel-assign" class="assign"></div>
+    </section>
+    <section class="group">
+      <h2>3. Caption</h2>
+      <label>Title <input id="title" type="text" maxlength="40" value="Sunset Heist"></label>
+      <label>Subtitle <input id="subtitle" type="text" maxlength="40" value="Neon Nights"></label>
+      <label>Title size
+        <input id="title-size" type="range" min="0.7" max="1.3" step="0.05" value="1">
+      </label>
+      <div class="color-row">
+        <span>Title colour</span>
+        <div id="title-colors"></div>
+      </div>
+    </section>
+    <section class="group">
+      <h2>4. Position the photo</h2>
+      <p class="note"><span id="panel-label">Spanning photo 1</span>. Drag the preview to move it, scroll to zoom.</p>
+      <label>Zoom <input id="zoom" type="range" min="1" max="3" step="0.01" value="1"></label>
+      <label>Left / right <input id="pan-x" type="range" min="-1" max="1" step="0.01" value="0"></label>
+      <label>Up / down <input id="pan-y" type="range" min="-1" max="1" step="0.01" value="0"></label>
+      <button type="button" id="fill">Fit photo again</button>
+    </section>
+    <section class="group">
+      <h2>5. Colour grade</h2>
+      <div id="grade-row" class="pick-row"></div>
+    </section>
+    <section class="group">
+      <h2>6. Export</h2>
+      <div id="size-row" class="pick-row"></div>
+      <button type="button" id="export" class="export">Export PNG</button>
+      <p id="status" role="status"></p>
+    </section>
+  </section>
+  <section class="stage">
+    <canvas id="preview" width="1080" height="1080" aria-label="Live cover preview"></canvas>
+    <p class="hint">Click a panel to select it. Drag to move its photo, scroll to zoom.</p>
+  </section>
+</main>
+<script type="module" src="./src/editor.js"></script>
+<script type="module" src="./src/shots.js"></script>
+</body>
+</html>

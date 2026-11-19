@@ -1,0 +1,70 @@
+/* Vice Panels editor: a dark workbench with neon accents, built for a wide
+   desktop window. The cover preview sits on the right, the controls on the
+   left. Nothing here loads from the network. */
+:root {
+  --bg: #14101c;
+  --panel: #1e1828;
+  --line: #2b2338;
+  --field-line: #453a5c;
+  --ink: #f2eef5;
+  --muted: #b9b0c9;
+  --accent: #ff5a8a;
+  --accent-deep: #d61f69;
+  --accent-deep-hover: #b81a58;
+  --gold: #ffd23f;
+  --ok: #7de8c3;
+  --paper: #fff8fa;
+  --shadow: rgba(0, 0, 0, 0.55);
+  --font-display: Anton, 'Arial Narrow', sans-serif;
+  --font-kicker: 'Bebas Neue', 'Arial Narrow', sans-serif;
+}
+html, body { margin: 0; min-height: 100%; overflow-x: clip; background: var(--bg); color: var(--ink); font: 15px/1.45 system-ui, sans-serif; }
+:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+.topbar { padding: 18px 28px 12px; border-bottom: 1px solid var(--line); }
+.topbar h1 { margin: 0; font-family: var(--font-display); font-weight: 400; font-size: 34px; letter-spacing: 2px; color: var(--accent); text-wrap: balance; }
+.topbar p { margin: 2px 0 0; color: var(--muted); }
+.workspace { display: flex; gap: 28px; align-items: flex-start; padding: 20px 28px 28px; }
+.controls { width: 340px; flex: none; display: flex; flex-direction: column; gap: 18px; }
+.group { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; }
+.group h2 { margin: 0; font-family: var(--font-kicker); font-weight: 400; font-size: 22px; letter-spacing: 3px; color: var(--gold); text-wrap: balance; }
+.note { margin: 0; color: var(--muted); font-size: 13px; }
+.slot { display: flex; flex-direction: column; gap: 6px; padding-top: 8px; border-top: 1px solid var(--line); }
+.slot:first-of-type { border-top: 0; padding-top: 0; }
+.slot-name { color: var(--muted); font-weight: 400; font-size: 13px; }
+label { display: flex; flex-direction: column; gap: 6px; font-weight: 600; }
+input[type=text] { font: inherit; padding: 9px 10px; border: 1px solid var(--field-line); border-radius: 8px; background: var(--bg); color: var(--ink); }
+input[type=file] { font: inherit; color: var(--muted); }
+input[type=range] { width: 100%; accent-color: var(--accent); }
+select { font: inherit; padding: 7px 8px; border: 1px solid var(--field-line); border-radius: 8px; background: var(--bg); color: var(--ink); }
+button { font: inherit; font-weight: 700; padding: 9px 12px; border: 1px solid var(--field-line); border-radius: 8px; background: var(--line); color: var(--ink); cursor: pointer; }
+button:hover { border-color: var(--accent); }
+button.picked { background: var(--accent-deep); border-color: var(--accent-deep); color: var(--paper); }
+.sample-row { display: flex; gap: 8px; }
+.sample-row button { flex: 1; padding: 6px; font-size: 13px; }
+.pick-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.pick { display: flex; align-items: center; gap: 10px; padding: 8px 10px; text-align: left; }
+.pick .diagram { position: relative; width: 34px; height: 26px; flex: none; background: var(--bg); border-radius: 3px; overflow: hidden; }
+.pick .diagram i { position: absolute; display: block; background: var(--accent); }
+.pick .swatch { width: 34px; height: 26px; flex: none; border-radius: 3px; }
+.mode-row { display: flex; gap: 8px; }
+.mode-row button { flex: 1; padding: 8px 6px; font-size: 12px; white-space: nowrap; }
+.assign { display: flex; flex-direction: column; gap: 8px; }
+.assign label { flex-direction: row; align-items: center; justify-content: space-between; font-weight: 400; }
+.assign select { max-width: 190px; }
+.color-row { display: flex; align-items: center; justify-content: space-between; }
+#title-colors { display: flex; gap: 8px; }
+.swatch-btn { width: 30px; height: 30px; padding: 0; border-radius: 50%; border: 2px solid transparent; }
+.swatch-btn.picked { border-color: var(--paper); box-shadow: 0 0 0 2px var(--accent); }
+.export { background: var(--accent-deep); border-color: var(--accent-deep); color: var(--paper); font-size: 17px; padding: 12px; }
+.export:hover { background: var(--accent-deep-hover); }
+#status { margin: 0; min-height: 20px; color: var(--ok); font-size: 13px; }
+.stage { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 10px; min-width: 0; }
+#preview { max-width: 100%; max-height: calc(100vh - 150px); width: auto; height: auto; box-shadow: 0 12px 44px var(--shadow); cursor: grab; touch-action: none; }
+#preview:active { cursor: grabbing; }
+.hint { margin: 0; color: var(--muted); font-size: 13px; }
+
+/* Screenshot mode: the cover alone, edge to edge. */
+body.shot-cover .topbar, body.shot-cover .controls, body.shot-cover .hint { display: none; }
+body.shot-cover .workspace { padding: 0; }
+body.shot-cover .stage { width: 100%; }
+body.shot-cover #preview { max-width: none; max-height: none; width: 100%; height: 100vh; box-shadow: none; }
