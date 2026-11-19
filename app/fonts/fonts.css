@@ -1,0 +1,17 @@
+/* Display faces shipped with the app, both under the SIL Open Font License
+   (see OFL.txt beside them). Anton carries the big cover titles, Bebas Neue
+   the kickers and subtitles. No other font is loaded. */
+@font-face {
+  font-family: 'Anton';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('./anton-latin.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Bebas Neue';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('./bebas-neue-latin.woff2') format('woff2');
+}
