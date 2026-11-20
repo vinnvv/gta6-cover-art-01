@@ -274,15 +274,15 @@ export function renderCover(canvas, state) {
   ctx.fillRect(pad, band.y, w - pad * 2, lineH);
   ctx.restore();
 
-  // Subtle decorative 5-star corner accent (top-right inside caption band)
+  // Subtle decorative 6-star corner accent (top-right inside caption band)
   const starR = Math.max(4, band.h * 0.036);
   const starGap = starR * 2.5;
-  const starsStartX = w - pad - starGap * 4.2;
+  const starsStartX = w - pad - starGap * 5.2;
   const starsY = band.y + band.h * 0.22;
   ctx.save();
   ctx.fillStyle = grade.bandLine;
   ctx.globalAlpha = 0.72;
-  for (let s = 0; s < 5; s++) {
+  for (let s = 0; s < 6; s++) {
     drawStar(ctx, starsStartX + s * starGap, starsY, starR, starR * 0.44);
   }
   ctx.restore();
